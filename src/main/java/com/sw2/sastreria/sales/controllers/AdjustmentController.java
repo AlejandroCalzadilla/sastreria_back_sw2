@@ -1,8 +1,8 @@
-package com.sw2.sastreria.products.controllers;
+package com.sw2.sastreria.sales.controllers;
 
 
-import com.sw2.sastreria.products.collections.Adjustment;
-import com.sw2.sastreria.products.repositories.AdjustmentRepository;
+import com.sw2.sastreria.sales.collections.Adjustment;
+import com.sw2.sastreria.sales.repositories.AdjustmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

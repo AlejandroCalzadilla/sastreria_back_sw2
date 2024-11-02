@@ -1,4 +1,4 @@
-package com.sw2.sastreria.products.collections;
+package com.sw2.sastreria.sales.collections;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

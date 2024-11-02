@@ -1,6 +1,5 @@
 package com.sw2.sastreria.sales.collections;
 
-import com.sw2.sastreria.pruebas.collections.Store;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
