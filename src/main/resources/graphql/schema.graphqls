@@ -7,9 +7,18 @@ type Query {
     findCustomerById(id: ID!): Customer
 
 
+    findAllRawMaterials: [RawMaterial]
+
+
 
 }
 
+
+type RawMaterial {
+    id: ID
+    name: String
+    unit: String
+}
 
 
 type Store {
@@ -53,7 +62,7 @@ type Mutation {
     deleteCustomer(id: ID!): String
 
 
-
+    createRawMaterial(name: String!, unit: String!): RawMaterial
 
 
 
