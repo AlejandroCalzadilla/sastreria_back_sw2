@@ -124,53 +124,6 @@ input TelephoneInput {
 
 
 
-type Mutation {
-
-
-
-    createAlmacen(name: String!, address: String!): Store
-    updateAlmacen(id: ID!, name: String, address: String): Store
-    deleteAlmacen(id: ID!): String
-
-
-
-    createCustomer(firstName: String!, lastName: String!, ci: String!, birthDate: String!, sex: String!, telephones: [TelephoneInput]!): Customer
-    updateCustomer(id: ID!, firstName: String, lastName: String, ci: String, birthDate: String, sex: String, telephones: [TelephoneInput]): Customer
-    deleteCustomer(id: ID!): String
-
-
-
-    createRawMaterial(name: String!, unit: String!): RawMaterial
-    updateRawMaterial(id:ID!,name: String, unit: String): RawMaterial
-    deleteRawMaterial(id: ID!): String
-
-
-
-
-
-    createNote(fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
-    updateNote(id:ID!,fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
-    deleteNote(id: ID!): String
-
-
-
-
-
-    createInventory(quantity: Int!, rawMaterialId: ID!, storeId: ID!): Inventory
-    updateInventory(id: ID!, quantity: Int, rawMaterialId: ID, storeId: ID): Inventory
-    deleteInventory(id: ID!): String
-
-
-
-
-
-    createAdjustment(date: String!, new_value: String!): Adjustment
-    updateAdjustment(id: ID!, date: String, new_value: String): Adjustment
-    deleteAdjustment(id: ID!): String
-
-    createVestimenta(nombre: String, genero: String, unidadVestimenta: UnidadVestimentaInput, medida: MedidaInput): Vestimenta
-
-}
 #vestimenta
 type Vestimenta {
     id: ID
@@ -239,3 +192,53 @@ input VestimentaInput {
 }
 
 
+
+
+
+type Mutation {
+
+
+
+    createAlmacen(name: String!, address: String!): Store
+    updateAlmacen(id: ID!, name: String, address: String): Store
+    deleteAlmacen(id: ID!): String
+
+
+
+    createCustomer(firstName: String!, lastName: String!, ci: String!, birthDate: String!, sex: String!, telephones: [TelephoneInput]!): Customer
+    updateCustomer(id: ID!, firstName: String, lastName: String, ci: String, birthDate: String, sex: String, telephones: [TelephoneInput]): Customer
+    deleteCustomer(id: ID!): String
+
+
+
+    createRawMaterial(name: String!, unit: String!): RawMaterial
+    updateRawMaterial(id:ID!,name: String, unit: String): RawMaterial
+    deleteRawMaterial(id: ID!): String
+
+
+
+
+
+    createNote(fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
+    updateNote(id:ID!,fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
+    deleteNote(id: ID!): String
+
+
+
+
+
+    createInventory(quantity: Int!, rawMaterialId: ID!, storeId: ID!): Inventory
+    updateInventory(id: ID!, quantity: Int, rawMaterialId: ID, storeId: ID): Inventory
+    deleteInventory(id: ID!): String
+
+
+
+
+
+    createAdjustment(date: String!, new_value: String!): Adjustment
+    updateAdjustment(id: ID!, date: String, new_value: String): Adjustment
+    deleteAdjustment(id: ID!): String
+
+    createVestimenta(nombre: String, genero: String, unidadVestimenta: UnidadVestimentaInput, medida: MedidaInput): Vestimenta
+
+}
