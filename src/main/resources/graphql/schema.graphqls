@@ -28,6 +28,8 @@ type Query {
     findAllAdjustments: [Adjustment]
     findAdjustmentById(id: ID!): Adjustment
 
+    getAllVestimentas: [Vestimenta]
+    getVestimentaById(id:ID):Vestimenta
 
 
 
@@ -166,9 +168,74 @@ type Mutation {
     updateAdjustment(id: ID!, date: String, new_value: String): Adjustment
     deleteAdjustment(id: ID!): String
 
+    createVestimenta(nombre: String, genero: String, unidadVestimenta: UnidadVestimentaInput, medida: MedidaInput): Vestimenta
+
+}
+#vestimenta
+type Vestimenta {
+    id: ID
+    nombre: String
+    genero: String
+    unidadVestimenta: UnidadVestimenta # Relación 1 a 1 o * con UnidadVestimenta
+    medida: Medida # Relación * a * con Medida
+}
+
+type UnidadVestimenta {
+    id: ID
+    estado: Boolean
+    medidaVestimenta: MedidaVestimenta # Relación de composición con MedidaVestimenta
+}
+
+type Medida {
+    id: ID
+    nombre: String
+    medidaVestimenta: MedidaVestimenta # Relación 1 a 1 o * con MedidaVestimenta
+}
+
+type MedidaVestimenta {
+    id: ID
+    valor: Float
+    cambio: Cambio # Relación 1 a 0 o 1 con Cambio
+}
+
+type Cambio {
+    id: ID
+    fecha: String
+    nuevo_valor: Float
+}
+
+input UnidadVestimentaInput {
+    id: ID
+    estado: Boolean
+    medidaVestimenta: MedidaVestimentaInput # Relación de composición con MedidaVestimenta
+}
 
 
+input MedidaVestimentaInput {
+    id: ID
+    valor: Float
+    cambio: CambioInput # Relación 1 a 0 o 1 con Cambio
+}
 
+input MedidaInput {
+    id: ID
+    nombre: String
+    medidaVestimenta: MedidaVestimentaInput # Relación 1 a 1 o * con MedidaVestimenta
+
+}
+
+input CambioInput {
+    id: ID
+    fecha: String
+    nuevo_valor: Float
+}
+
+input VestimentaInput {
+    id: ID
+    nombre: String
+    genero: String
+    unidadVestimentas: UnidadVestimentaInput # Cambiado a un arreglo
+    medidas: MedidaInput # Cambiado a un arreglo
 }
 
 

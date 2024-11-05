@@ -1,8 +1,8 @@
-package com.sw2.sastreria.sales.controllers;
+package com.sw2.sastreria.sales.controllers.venta;
 
-import com.sw2.sastreria.sales.collections.DetailNote;
-import com.sw2.sastreria.sales.collections.Note;
-import com.sw2.sastreria.sales.repositories.NoteRepository;
+import com.sw2.sastreria.sales.collections.venta.DetailNote;
+import com.sw2.sastreria.sales.collections.venta.Note;
+import com.sw2.sastreria.sales.repositories.venta.NoteRepository;
 import com.sw2.sastreria.utils.PaginatedResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;

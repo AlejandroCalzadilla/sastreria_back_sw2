@@ -1,4 +1,4 @@
-package com.sw2.sastreria.sales.collections;
+package com.sw2.sastreria.sales.collections.venta;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,8 +1,8 @@
-package com.sw2.sastreria.sales.controllers;
+package com.sw2.sastreria.sales.controllers.cliente;
 
-import com.sw2.sastreria.sales.repositories.CustomerRepository;
-import com.sw2.sastreria.sales.collections.Customer;
-import com.sw2.sastreria.sales.collections.Telephone;
+import com.sw2.sastreria.sales.repositories.cliente.CustomerRepository;
+import com.sw2.sastreria.sales.collections.cliente.Customer;
+import com.sw2.sastreria.sales.collections.cliente.Telephone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;

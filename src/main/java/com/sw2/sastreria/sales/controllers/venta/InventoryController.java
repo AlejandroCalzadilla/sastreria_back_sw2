@@ -1,7 +1,7 @@
-package com.sw2.sastreria.sales.controllers;
+package com.sw2.sastreria.sales.controllers.venta;
 
-import com.sw2.sastreria.sales.collections.Inventory;
-import com.sw2.sastreria.sales.services.InventoryService;
+import com.sw2.sastreria.sales.collections.venta.Inventory;
+import com.sw2.sastreria.sales.services.venta.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;

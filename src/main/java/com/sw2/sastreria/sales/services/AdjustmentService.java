@@ -1,7 +1,7 @@
 package com.sw2.sastreria.sales.services;
 
-import com.sw2.sastreria.sales.collections.Adjustment;
-import com.sw2.sastreria.sales.repositories.AdjustmentRepository;
+import com.sw2.sastreria.sales.collections.cliente.Adjustment;
+import com.sw2.sastreria.sales.repositories.cliente.AdjustmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,15 +1,13 @@
-package com.sw2.sastreria.sales.controllers;
+package com.sw2.sastreria.sales.controllers.cliente;
 
 
-import com.sw2.sastreria.sales.collections.Adjustment;
+import com.sw2.sastreria.sales.collections.cliente.Adjustment;
 import com.sw2.sastreria.sales.services.AdjustmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

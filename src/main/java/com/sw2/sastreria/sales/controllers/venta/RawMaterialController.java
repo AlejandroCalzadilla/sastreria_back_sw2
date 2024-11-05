@@ -1,15 +1,14 @@
-package com.sw2.sastreria.sales.controllers;
+package com.sw2.sastreria.sales.controllers.venta;
 
-import com.sw2.sastreria.sales.repositories.RawMaterialRepository;
+import com.sw2.sastreria.sales.repositories.venta.RawMaterialRepository;
 import com.sw2.sastreria.utils.PaginatedResponse;
-import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-import com.sw2.sastreria.sales.collections.RawMaterial;
+import com.sw2.sastreria.sales.collections.venta.RawMaterial;
 
 import java.util.Collections;
 import java.util.List;

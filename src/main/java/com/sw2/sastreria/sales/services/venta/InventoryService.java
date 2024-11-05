@@ -1,11 +1,11 @@
-package com.sw2.sastreria.sales.services;
+package com.sw2.sastreria.sales.services.venta;
 
-import com.sw2.sastreria.sales.collections.Inventory;
-import com.sw2.sastreria.sales.collections.RawMaterial;
-import com.sw2.sastreria.sales.collections.Store;
-import com.sw2.sastreria.sales.repositories.InventoryRepository;
-import com.sw2.sastreria.sales.repositories.RawMaterialRepository;
-import com.sw2.sastreria.sales.repositories.StoreRepository;
+import com.sw2.sastreria.sales.collections.venta.Inventory;
+import com.sw2.sastreria.sales.collections.venta.RawMaterial;
+import com.sw2.sastreria.sales.collections.venta.Store;
+import com.sw2.sastreria.sales.repositories.venta.InventoryRepository;
+import com.sw2.sastreria.sales.repositories.venta.RawMaterialRepository;
+import com.sw2.sastreria.sales.repositories.venta.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

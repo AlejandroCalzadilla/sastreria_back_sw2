@@ -1,6 +1,6 @@
-package com.sw2.sastreria.sales.services;
+package com.sw2.sastreria.sales.services.venta;
 
-import com.sw2.sastreria.sales.collections.RawMaterial;
+import com.sw2.sastreria.sales.collections.venta.RawMaterial;
 import com.sw2.sastreria.utils.ValidationException;
 import org.springframework.stereotype.Service;
 
