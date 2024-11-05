@@ -10,16 +10,15 @@ type Query {
     findRawMaterialById(id: ID!): RawMaterial
 
 
-    findAllStore (limit: Int, offset: Int): PaginatedStore!
+    findAllStore:[Store]
     findStoreById(id: ID!): Store
 
 
-
-
-
     findAllNotes(limit: Int, offset: Int): PaginatedNotes!
+    findNoteById(id: ID!): Note
+
     #findAllDetailNotes: [DetailNote]
-    findDetailNoteById(id: ID!): DetailNote
+    #findDetailNoteById(id: ID!): DetailNote
 
     findAllInventories: [Inventory]
     findInventoryById(id: ID!): Inventory
@@ -149,7 +148,7 @@ type Mutation {
 
     createNote(fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
     updateNote(id:ID!,fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
-    deleteNota(id: ID!): String
+    deleteNote(id: ID!): String
 
 
 

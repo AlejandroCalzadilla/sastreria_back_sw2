@@ -29,7 +29,7 @@ public class StoreController {
 
     // Query para obtener todos los Almacenes
     @QueryMapping
-    public List<Store> findAllStores() {
+    public List<Store> findAllStore() {
         return storeRepository.findAll();
     }
 
