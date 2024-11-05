@@ -2,43 +2,47 @@ package com.sw2.sastreria.sales.controllers;
 
 
 import com.sw2.sastreria.sales.collections.Adjustment;
-import com.sw2.sastreria.sales.repositories.AdjustmentRepository;
+import com.sw2.sastreria.sales.services.AdjustmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
-@RestController
-@RequestMapping("/adjustments")
+@Controller
 public class AdjustmentController {
 
+
     @Autowired
-    private AdjustmentRepository adjustmentRepository;
+    private AdjustmentService adjustmentService;
 
-    @GetMapping
-    public List<Adjustment> getAllAdjustments() {
-        return adjustmentRepository.findAll();
+    @QueryMapping
+    public List<Adjustment> findAllAdjustments() {
+        return adjustmentService.findAllAdjustments();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Adjustment> getAdjustmentById(@PathVariable String id) {
-        return adjustmentRepository.findById(id);
+    @QueryMapping
+    public Adjustment findAdjustmentById(@Argument String id) {
+        return adjustmentService.findAdjustmentById(id);
     }
 
-    @PostMapping
-    public Adjustment createAdjustment(@RequestBody Adjustment adjustment) {
-        return adjustmentRepository.save(adjustment);
+    @MutationMapping
+    public Adjustment createAdjustment(@Argument String date, @Argument String newValue) {
+        return adjustmentService.createAdjustment(date, newValue);
     }
 
-    @PutMapping("/{id}")
-    public Adjustment updateAdjustment(@PathVariable String id, @RequestBody Adjustment adjustment) {
-        adjustment.setId(id);
-        return adjustmentRepository.save(adjustment);
+    @MutationMapping
+    public Adjustment updateAdjustment(@Argument String id, @Argument String date, @Argument String newValue) {
+        return adjustmentService.updateAdjustment(id, date, newValue);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteAdjustment(@PathVariable String id) {
-        adjustmentRepository.deleteById(id);
+    @MutationMapping
+    public String deleteAdjustment(@Argument String id) {
+        adjustmentService.deleteAdjustment(id);
+        return "Adjustment deleted successfully";
     }
 }

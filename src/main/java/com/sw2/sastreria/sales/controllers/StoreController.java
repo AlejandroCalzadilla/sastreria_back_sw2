@@ -42,6 +42,9 @@ public class StoreController {
         return storeRepository.save(almacen);
     }
 
+
+
+
     // Mutation para actualizar un Almacen existente
     @MutationMapping
     public Store updateAlmacen(@Argument String id, @Argument String name, @Argument String address) {
@@ -54,6 +57,8 @@ public class StoreController {
         }
         return null;
     }
+
+
 
     // Mutation para eliminar un Almacen
     @MutationMapping

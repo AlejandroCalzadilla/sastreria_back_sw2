@@ -8,6 +8,13 @@ import java.util.Date;
 
 @Document(collection = "adjustment")
 public class Adjustment {
+    @Id
+    private String id;
+    private String date;
+    private String new_value;
+
+
+
     public String getId() {
         return id;
     }
@@ -16,11 +23,11 @@ public class Adjustment {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -32,9 +39,6 @@ public class Adjustment {
         this.new_value = new_value;
     }
 
-    @Id
-    private String id;
-    private Date date;
-    private String new_value;
+
 
 }

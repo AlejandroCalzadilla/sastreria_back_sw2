@@ -1,18 +1,55 @@
 type Query {
 
-    findStoreById(id: ID!): Store
-    findAllStores: [Store]
+
 
     findAllCustomers: [Customer]
     findCustomerById(id: ID!): Customer
 
 
-    findAllRawMaterials: [RawMaterial]
-    #findRawMaterialById(id: ID!): RawMaterial
+    findAllRawMaterials(limit: Int, offset: Int): PaginatedRawMaterials!
+    findRawMaterialById(id: ID!): RawMaterial
+
+
+    findAllStore (limit: Int, offset: Int): PaginatedStore!
+    findStoreById(id: ID!): Store
+
+
+
+
+
+    findAllNotes(limit: Int, offset: Int): PaginatedNotes!
+    #findAllDetailNotes: [DetailNote]
+    findDetailNoteById(id: ID!): DetailNote
+
+    findAllInventories: [Inventory]
+    findInventoryById(id: ID!): Inventory
+
+
+
+    findAllAdjustments: [Adjustment]
+    findAdjustmentById(id: ID!): Adjustment
+
 
 
 
 }
+
+type PaginatedRawMaterials {
+    items: [RawMaterial]
+    total: Int
+}
+
+type PaginatedNotes {
+    items: [Note]
+    total: Int
+}
+
+type PaginatedStore {
+    items: [Store]
+    total: Int
+}
+
+
 
 
 type RawMaterial {
@@ -20,7 +57,6 @@ type RawMaterial {
     name: String
     unit: String
 }
-
 
 type Store {
     id: ID
@@ -43,6 +79,42 @@ type Telephone {
     type: String
 }
 
+type Note {
+    id: ID
+    fecha: String
+    tipo: String
+    montoTotal: Float
+    detailNotes: [DetailNote]
+}
+
+
+type DetailNote {
+    quantity: Int
+    price: Float
+}
+
+
+type Inventory {
+    id: ID
+    quantity: Int
+    rawMaterial: RawMaterial
+    store: Store
+}
+
+
+type Adjustment {
+    id: ID
+    date: String
+    new_value: String
+}
+
+
+input DetailNoteInput {
+    quantity: Int
+    price: Float
+}
+
+
 input TelephoneInput {
     number: String
     type: String
@@ -52,6 +124,9 @@ input TelephoneInput {
 
 
 type Mutation {
+
+
+
     createAlmacen(name: String!, address: String!): Store
     updateAlmacen(id: ID!, name: String, address: String): Store
     deleteAlmacen(id: ID!): String
@@ -63,8 +138,34 @@ type Mutation {
     deleteCustomer(id: ID!): String
 
 
-    createRawMaterial(name: String!, unit: String!): RawMaterial
 
+    createRawMaterial(name: String!, unit: String!): RawMaterial
+    updateRawMaterial(id:ID!,name: String, unit: String): RawMaterial
+    deleteRawMaterial(id: ID!): String
+
+
+
+
+
+    createNote(fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
+    updateNote(id:ID!,fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
+    deleteNota(id: ID!): String
+
+
+
+
+
+    createInventory(quantity: Int!, rawMaterialId: ID!, storeId: ID!): Inventory
+    updateInventory(id: ID!, quantity: Int, rawMaterialId: ID, storeId: ID): Inventory
+    deleteInventory(id: ID!): String
+
+
+
+
+
+    createAdjustment(date: String!, new_value: String!): Adjustment
+    updateAdjustment(id: ID!, date: String, new_value: String): Adjustment
+    deleteAdjustment(id: ID!): String
 
 
 

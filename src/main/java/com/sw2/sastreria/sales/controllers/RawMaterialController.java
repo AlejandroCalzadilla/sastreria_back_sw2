@@ -1,38 +1,50 @@
 package com.sw2.sastreria.sales.controllers;
 
 import com.sw2.sastreria.sales.repositories.RawMaterialRepository;
+import com.sw2.sastreria.utils.PaginatedResponse;
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import com.sw2.sastreria.sales.collections.RawMaterial;
+
+import java.util.Collections;
 import java.util.List;
 
 
 @Controller
+@Validated
 public class RawMaterialController {
 
     @Autowired
     private RawMaterialRepository rawMaterialRepository;
 
     @QueryMapping
-    public List<RawMaterial> findAllRawMaterials() {
-        return rawMaterialRepository.findAll();
+    public PaginatedResponse<RawMaterial> findAllRawMaterials(@Argument int limit, @Argument int offset) {
+        List<RawMaterial> allMaterials = rawMaterialRepository.findAll();
+        int total = allMaterials.size();
+
+        int end = Math.min(offset + limit, allMaterials.size());
+        List<RawMaterial> paginatedMaterials = offset > allMaterials.size() ?
+                Collections.emptyList() :
+                allMaterials.subList(offset, end);
+        return new PaginatedResponse<>(paginatedMaterials, total);
     }
 
 
-     /*
     @QueryMapping
     public RawMaterial findRawMaterialById(@Argument String id) {
         return rawMaterialRepository.findById(id).orElse(null);
     }
-    ]
-      */
+
+
 
 
     @MutationMapping
-    public RawMaterial createRawMaterial(@Argument  String name,@Argument String unit) {
+    public RawMaterial createRawMaterial(@Argument String name, @Argument String unit) {
         RawMaterial rawMaterial = new RawMaterial();
         rawMaterial.setName(name);
         rawMaterial.setUnit(unit);
@@ -40,4 +52,21 @@ public class RawMaterialController {
     }
 
 
+
+    @MutationMapping
+    public RawMaterial updateRawMaterial(@Argument String id, @Argument String name, @Argument String unit) {
+        return rawMaterialRepository.findById(id).map(rawMaterial -> {
+            if (name != null) rawMaterial.setName(name);
+            if (unit != null) rawMaterial.setUnit(unit);
+
+            return rawMaterialRepository.save(rawMaterial);
+        }).orElse(null);
+    }
+
+
+    @MutationMapping
+    public String deleteRawMaterial(@Argument String id) {
+        rawMaterialRepository.deleteById(id);
+        return "RawMaterial deleted successfully";
+    }
 }
