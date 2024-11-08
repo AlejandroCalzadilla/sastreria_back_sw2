@@ -21,7 +21,16 @@ public class SecurityConfig {
     }
 
     // Configura las reglas de seguridad para los endpoints
-
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable()) // Deshabilita CSRF para GraphQL si no es necesario
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/graphql").permitAll() // Permite el acceso a /graphql sin autenticación
+                        .anyRequest().authenticated() // Resto de rutas requieren autenticación
+                );
+        return http.build();
+    }
 
     // Configura el AuthenticationManager para autenticación de usuarios
     @Bean
