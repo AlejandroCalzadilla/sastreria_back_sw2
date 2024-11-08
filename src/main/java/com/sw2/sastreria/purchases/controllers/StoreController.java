@@ -35,7 +35,7 @@ public class StoreController {
 
     // Mutation para crear un nuevo Almacen
     @MutationMapping
-    public Store createAlmacen(@Argument String name, @Argument String address) {
+    public Store createStore(@Argument String name, @Argument String address) {
         Store almacen = new Store();
         almacen.setName(name);
         almacen.setAddress(address);
@@ -47,7 +47,7 @@ public class StoreController {
 
     // Mutation para actualizar un Almacen existente
     @MutationMapping
-    public Store updateAlmacen(@Argument String id, @Argument String name, @Argument String address) {
+    public Store updateStore(@Argument String id, @Argument String name, @Argument String address) {
         Optional<Store> optionalAlmacen = storeRepository.findById(id);
         if (optionalAlmacen.isPresent()) {
             Store almacen = optionalAlmacen.get();
@@ -62,7 +62,7 @@ public class StoreController {
 
     // Mutation para eliminar un Almacen
     @MutationMapping
-    public String deleteAlmacen(@Argument String id) {
+    public String deleteStore(@Argument String id) {
         storeRepository.deleteById(id);
         return "Almacen eliminado con éxito";
     }

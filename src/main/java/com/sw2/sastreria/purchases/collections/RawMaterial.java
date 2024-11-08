@@ -12,14 +12,7 @@ public class RawMaterial {
 
     @Id
     private String id;
-
-    @NotBlank(message = "Name is mandatory")
-    @Size(min = 4, message = "Name must be at least 4 characters long")
-    @Indexed(unique = true) // Crea un índice único en la base de datos
     private String name;
-
-    @NotBlank(message = "Unit is mandatory")
-    @Size(min = 4, message = "Unit must be at least 4 characters long")
     private String unit;
 
 

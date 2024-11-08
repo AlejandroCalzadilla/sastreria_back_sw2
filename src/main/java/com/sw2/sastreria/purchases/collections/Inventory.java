@@ -10,6 +10,9 @@ public class Inventory {
     @Id
     private String id;
     private int quantity;
+    private String rawMaterialId;
+    private String storeId;
+
 
     public String getId() {
         return id;
@@ -27,25 +30,21 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public RawMaterial getRawMaterial() {
-        return rawMaterial;
+    public String getRawMaterialId() {
+        return rawMaterialId;
     }
 
-    public void setRawMaterial(RawMaterial rawMaterial) {
-        this.rawMaterial = rawMaterial;
+    public void setRawMaterialId(String rawMaterialId) {
+        this.rawMaterialId = rawMaterialId;
     }
 
-    public Store getStore() {
-        return store;
+    public String getStoreId() {
+        return storeId;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setStoreId(String store) {
+        this.storeId = store;
     }
 
-    @DBRef
-    private RawMaterial rawMaterial;
 
-    @DBRef
-    private Store store;
 }

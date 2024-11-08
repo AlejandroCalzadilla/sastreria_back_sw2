@@ -80,26 +80,32 @@ type Telephone {
     type: String
 }
 
-type Note {
-    id: ID
-    fecha: String
-    tipo: String
-    montoTotal: Float
-    detailNotes: [DetailNote]
-}
-
 
 type DetailNote {
+    id: ID
     quantity: Int
     price: Float
+    rawMaterialId: ID!
 }
+
+
+
+type Note {
+    id: ID
+    date: String
+    type: String
+    totalAmount: Float
+    detailNotes: [DetailNote]
+    storeId:ID!
+}
+
 
 
 type Inventory {
     id: ID
     quantity: Int
-    rawMaterial: RawMaterial
-    store: Store
+    rawMaterialId: ID!
+    storeId: ID!
 }
 
 
@@ -110,9 +116,11 @@ type Adjustment {
 }
 
 
+
 input DetailNoteInput {
     quantity: Int
     price: Float
+    rawMaterialId: ID!
 }
 
 
@@ -199,9 +207,9 @@ type Mutation {
 
 
 
-    createAlmacen(name: String!, address: String!): Store
-    updateAlmacen(id: ID!, name: String, address: String): Store
-    deleteAlmacen(id: ID!): String
+    createStore(name: String!, address: String!): Store
+    updateStore(id: ID!, name: String, address: String): Store
+    deleteStore(id: ID!): String
 
 
 
@@ -219,11 +227,9 @@ type Mutation {
 
 
 
-    createNote(fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
-    updateNote(id:ID!,fecha:String!, tipo: String!, montoTotal: Float!, telephones: [DetailNoteInput]!): Note
+    createNote(date: String!, type: String!, totalAmount: Float!, detailNotes: [DetailNoteInput]!, storeId: ID!): Note
+    updateNote(id: ID!, date: String, type: String, totalAmount: Float, detailNotes: [DetailNoteInput], storeId: ID): Note
     deleteNote(id: ID!): String
-
-
 
 
 

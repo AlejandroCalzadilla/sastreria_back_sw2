@@ -11,12 +11,20 @@ import java.util.List;
 public class Note {
     @Id
     private String id;
-    private String fecha;
-    private String tipo;
-    private Float montoTotal;
-
+    private String date;
+    private String type;
+    private Float totalAmount;
     @DBRef
     private List<DetailNote> detailNotes;
+    private String storeId;
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
+    }
 
     public String getId() {
         return id;
@@ -26,28 +34,28 @@ public class Note {
         this.id = id;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getDate() {
+        return date;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public double getMontoTotal() {
-        return montoTotal;
+    public Float getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setMontoTotal(float montoTotal) {
-        this.montoTotal = montoTotal;
+    public void setTotalAmount(Float totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public List<DetailNote> getDetailNotes() {
@@ -57,6 +65,9 @@ public class Note {
     public void setDetailNotes(List<DetailNote> detailNotes) {
         this.detailNotes = detailNotes;
     }
+
+
+
 
     // Getters and Setters
 }
